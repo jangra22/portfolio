@@ -10,10 +10,10 @@ const Projects = () => {
       link: "https://silly-dusk-155e98.netlify.app/"
     },
     {
-      title: "Art Gallery",
-      description: "Showing Art gallery ready to purchase Arts.",
-      tags: ["TypeScript", "Vue.js", "Supabase", "Chart.js"],
-      link: "#"
+      title: "StreakForge",
+      description: "A full-stack habit tracker with weekly checkbox grid, real-time progress bars, and streak counters.",
+      tags: ["Next.js", "React", "Tailwind CSS", "Supabase"],
+      link: "https://streakforge2208.vercel.app/"
     },
     {
       title: "E-Commerce",
