@@ -1,160 +1,117 @@
-// import React, { useEffect } from 'react';
-
-// const Loader = ({ onLoaded }) => {
-//   const message = "Turning Expertise Into Impact";
-//   const letters = message.split('');
-
-//   useEffect(() => {
-//     const duration = 5500;
-//     const timer = setTimeout(() => {
-//       onLoaded();
-//     }, duration);
-//     return () => clearTimeout(timer);
-//   }, [onLoaded]);
-
-//   return (
-//     <div className="fixed inset-0 bg-black flex items-center justify-center z-50 overflow-hidden">
-//       <div className="relative w-full h-full flex items-center justify-center launch-container">
-//         {letters.map((letter, index) => {
-//           const randomX = Math.random() * 80 - 40;
-//           const randomY = Math.random() * 80 - 40;
-//           const randomRotate = Math.random() * 360;
-//           const delay = index * 0.05;
-
-//           return (
-//             <span
-//               key={index}
-//               className="absolute font-bold font-mono text-sm md:text-2xl lg:text-3xl tracking-widest launch-letter"
-//               style={{
-//                 color: '#ee1717ff',
-//                 left: '50%',
-//                 top: '50%',
-//                 transform: `translate(-50%, -50%)`,
-//                 animation: `
-//                   ignite 0.8s ease-out forwards,
-//                   scatter 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards,
-//                   gather 1.2s cubic-bezier(0.22, 1, 0.36, 1) ${2.6 + delay}s forwards,
-//                   launch 1.4s cubic-bezier(0.4, 0, 0.2, 1) ${4.2 + delay}s forwards
-//                 `,
-//                 '--random-x': `${randomX}vw`,
-//                 '--random-y': `${randomY}vh`,
-//                 '--random-rotate': `${randomRotate}deg`,
-//                 '--final-x': `${(index - letters.length / 2) * 1.2}em`,
-//                 textShadow:
-//                   '0 0 10px rgba(238, 23, 23, 0.6), 0 0 30px rgba(238, 23, 23, 0.4)',
-//               }}
-//             >
-//               {letter === ' ' ? '\u00A0' : letter}
-//             </span>
-//           );
-//         })}
-//       </div>
-
-//       <style>{`
-//         /* Phase 1: Ignition */
-//         @keyframes ignite {
-//           0% {
-//             opacity: 0;
-//             filter: blur(12px);
-//             transform: translate(-50%, -50%) scale(0.8);
-//           }
-//           100% {
-//             opacity: 1;
-//             filter: blur(0);
-//             transform: translate(-50%, -50%) scale(1);
-//           }
-//         }
-
-//         /* Phase 2: Scatter */
-//         @keyframes scatter {
-//           100% {
-//             transform: translate(
-//               calc(-50% + var(--random-x)),
-//               calc(-50% + var(--random-y))
-//             ) rotate(var(--random-rotate));
-//           }
-//         }
-
-//         /* Phase 3: Alignment */
-//         @keyframes gather {
-//           0% {
-//             letter-spacing: 0.6em;
-//           }
-//           100% {
-//             transform: translate(
-//               calc(-50% + var(--final-x)),
-//               -50%
-//             ) rotate(0deg);
-//             letter-spacing: normal;
-//           }
-//         }
-
-//         /* Phase 4: Launch 🚀 */
-//         @keyframes launch {
-//           0% {
-//             opacity: 1;
-//             transform: translate(
-//               calc(-50% + var(--final-x)),
-//               -50%
-//             ) scale(1);
-//             filter: blur(0);
-//           }
-//           100% {
-//             opacity: 0;
-//             transform: translate(
-//               calc(-50% + var(--final-x)),
-//               -140%
-//             ) scale(0.9);
-//             filter: blur(6px);
-//           }
-//         }
-//       `}</style>
-//     </div>
-//   );
-// };
-
-// export default Loader;
-
-
-/* HTML: <div class="loader"></div> */
-
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Loader = ({ onLoaded }) => {
+  const [progress, setProgress] = useState(0);
+  const [logs, setLogs] = useState([]);
+
+  const bootSequence = [
+    "LOADING_SKILLS_ARSENAL: MERN_STACK, AI_TOOLS... OK",
+    "FETCHING_DEVELOPER_PROFILE: RITIK_JANGRA... OK",
+    "INITIALIZING_FEATURED_PROJECTS... LOADED",
+    "COMPILING_FRONTEND_ARCHITECTURE... SUCCESS",
+    "INJECTING_NEO_BRUTALISM_STYLES... APPLIED",
+    "ESTABLISHING_CONTACT_LINKS... CONNECTED",
+    "RENDERING_USER_INTERFACE... STANDBY",
+    "FINALIZING_PORTFOLIO_LAUNCH..."
+  ];
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      onLoaded();
-    }, 4000);
-    return () => clearTimeout(timer);
+    let currentProgress = 0;
+    let logIndex = 0;
+    
+    // Staccato progress
+    const interval = setInterval(() => {
+      // jump randomly between 5 and 15
+      currentProgress += Math.floor(Math.random() * 11) + 5;
+      
+      if (currentProgress >= 100) {
+        currentProgress = 100;
+        clearInterval(interval);
+        setTimeout(() => {
+          onLoaded();
+        }, 500); // Wait a bit at 100%
+      }
+      setProgress(currentProgress);
+      
+      if (logIndex < bootSequence.length && Math.random() > 0.2) {
+        setLogs(prev => {
+          // Keep only last 5 logs so it doesn't overflow
+          const newLogs = [...prev, bootSequence[logIndex]];
+          return newLogs.slice(-5);
+        });
+        logIndex++;
+      }
+    }, 300); // 300ms stepped intervals
+    
+    return () => clearInterval(interval);
   }, [onLoaded]);
 
   return (
-    <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
-      <div className="loader"></div>
-      <style>{`
-        .loader {
-          display: inline-flex;
-          gap: 10px;
-        }
-        .loader:before,
-        .loader:after {
-          content: "";
-          height: 100px;
-          aspect-ratio: 1;
-          border-radius: 50%;
-          background:
-            linear-gradient(#222 0 0) top/100% 0% no-repeat,
-            radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
-            #fff;
-          animation: l9 4s infinite ease-in;
-        }
-        @keyframes l9 {
-          0%  { background-size:100% 0%, 8px 8px; background-position:top, 50% 50% }
-          80% { background-size:100% 70%, 8px 8px; background-position:top, 50% 70% }
-          84%,
-          100%{ background-size:100% 0%, 8px 8px; background-position:top, 50% 50% }
-        }
-      `}</style>
+    <div className="fixed inset-0 z-50 bg-background text-foreground flex flex-col justify-between p-6 md:p-8 border-[12px] md:border-[20px] border-black box-border overflow-hidden">
+      
+      {/* Corner L-brackets */}
+      <div className="absolute top-4 md:top-8 left-4 md:left-8 w-8 h-8 border-t-8 border-l-8 border-black z-0"></div>
+      <div className="absolute top-4 md:top-8 right-4 md:right-8 w-8 h-8 border-t-8 border-r-8 border-black z-0"></div>
+      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 w-8 h-8 border-b-8 border-l-8 border-black z-0"></div>
+      <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 w-8 h-8 border-b-8 border-r-8 border-black z-0"></div>
+
+      {/* Crosshairs */}
+      <div className="absolute top-1/2 left-0 w-8 h-[4px] bg-black -translate-y-1/2 z-0"></div>
+      <div className="absolute top-1/2 right-0 w-8 h-[4px] bg-black -translate-y-1/2 z-0"></div>
+      <div className="absolute top-0 left-1/2 w-[4px] h-8 bg-black -translate-x-1/2 z-0"></div>
+      <div className="absolute bottom-0 left-1/2 w-[4px] h-8 bg-black -translate-x-1/2 z-0"></div>
+
+      {/* Top HUD */}
+      <div className="flex flex-col md:flex-row justify-between items-start font-mono font-bold text-xs md:text-sm z-10 gap-2">
+        <div className="bg-surface-dim border-2 border-black px-2 py-1 shadow-brutal-sm">
+          LOC: GRID_SECTOR_7
+        </div>
+        <div className="bg-secondary text-white border-2 border-black px-2 py-1 shadow-brutal-sm">
+          PHASE_04: INTERFACE_SYNCHRONIZATION
+        </div>
+      </div>
+
+      {/* Center Display */}
+      <div className="flex flex-col items-center justify-center flex-grow z-10 my-8">
+        <div className="bg-white border-4 md:border-8 border-black p-6 md:p-12 shadow-[8px_8px_0_0_rgba(0,0,0,1)] flex flex-col items-center relative">
+          
+          <h1 className="font-sans font-black italic text-2xl md:text-5xl mb-2 md:mb-6 uppercase tracking-tighter">
+            LOADING PORTFOLIO...
+          </h1>
+          
+          <div className="text-7xl md:text-[180px] font-display font-bold leading-none mb-6 tracking-tighter text-primary" style={{ textShadow: '4px 4px 0 #000, 8px 8px 0 #000' }}>
+            {progress}%
+          </div>
+          
+          <div className="w-full max-w-sm md:max-w-xl h-8 md:h-12 border-4 border-black bg-surface-dim relative overflow-hidden">
+            <div 
+              className="absolute top-0 left-0 h-full bg-primary border-r-4 border-black transition-all duration-75"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+          
+        </div>
+      </div>
+
+      {/* Bottom HUD */}
+      <div className="flex flex-col md:flex-row justify-between items-end font-mono text-xs md:text-sm z-10 gap-4">
+        {/* Terminal Logs */}
+        <div className="bg-black text-primary p-4 border-4 border-black shadow-[4px_4px_0_0_#b70011] w-full md:w-1/2 lg:w-1/3 h-40 overflow-hidden flex flex-col justify-end">
+          {logs.map((log, i) => (
+            <div key={i} className="whitespace-nowrap overflow-hidden text-ellipsis">{'>'} {log}</div>
+          ))}
+          <div className="animate-pulse">{'>'} _</div>
+        </div>
+
+        {/* Operator Info */}
+        <div className="bg-surface-bright border-4 border-black p-4 shadow-brutal text-right">
+          <div className="font-bold border-b-2 border-black pb-1 mb-2">OPERATOR INFO</div>
+          <div>ID: RJ-2026</div>
+          <div>STATUS: AUTHORIZED</div>
+          <div>NET: ONLINE</div>
+        </div>
+      </div>
+
     </div>
   );
 };

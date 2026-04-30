@@ -1,22 +1,26 @@
 import React from 'react';
 import RevealOnScroll from '../components/common/RevealOnScroll';
+import resumePdf from '../assets/Ritikresumeupdated.pdf';
 
 const Resume = () => {
   return (
-    <section id="resume" className="py-32 px-6 flex items-center justify-center bg-gradient-to-b from-luxury-black to-luxury-charcoal/20">
+    <section id="resume" className="py-32 px-6 flex items-center justify-center bg-surface-dim">
       <RevealOnScroll>
         <div className="text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
-            Ready to collaborate?
-          </h2>
-          <p className="text-gray-400 mb-10 max-w-xl mx-auto text-lg">
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white bg-primary px-6 py-3 border-4 border-black inline-block shadow-brutal rotate-1">
+              Ready to collaborate?
+            </h2>
+          </div>
+          <p className="text-on-surface-variant font-medium mb-10 max-w-xl mx-auto text-lg">
             I am currently open to new opportunities and interesting projects.
             Let's build something exceptional together.
           </p>
           
           <a
-            href="#"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-luxury-black font-bold tracking-wide overflow-hidden hover:bg-gray-200 transition-colors rounded-sm"
+            href={resumePdf}
+            download="Ritik_Jangra_Resume.pdf"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-mono font-bold tracking-wide border-4 border-black shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase"
           >
             <span>Download Resume</span>
             <svg 

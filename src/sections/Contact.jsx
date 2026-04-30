@@ -7,77 +7,103 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for reaching out!");
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/jangraritik1@gmail.com", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
+      if (response.ok) {
+        alert("Thank you for reaching out! Your message has been sent.");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Oops! Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20 px-6">
+    <section id="contact" className="min-h-screen flex items-center justify-center py-20 px-6 bg-background">
       <RevealOnScroll>
         <div className="w-full max-w-md">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center text-white">
-            Get in Touch
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white bg-primary px-6 py-3 border-4 border-black inline-block shadow-brutal -rotate-2">
+              Get in Touch
+            </h2>
+          </div>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="relative">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full bg-transparent border-b border-gray-700 py-3 text-white focus:outline-none focus:border-[#d4af37] transition-colors peer placeholder-transparent"
-                placeholder="Name"
-              />
-              <label className="absolute left-0 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#d4af37] peer-valid:-top-3 peer-valid:text-xs">
-                Name
-              </label>
-            </div>
+          <div className="bg-white border-4 border-black p-8 shadow-brutal">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block font-mono font-bold text-foreground mb-2">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-surface-bright border-4 border-black py-3 px-4 text-foreground font-medium focus:outline-none focus:bg-white focus:shadow-[4px_4px_0_0_#b70011] transition-all"
+                  placeholder="John Doe"
+                />
+              </div>
 
-            <div className="relative">
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full bg-transparent border-b border-gray-700 py-3 text-white focus:outline-none focus:border-[#d4af37] transition-colors peer placeholder-transparent"
-                placeholder="Email"
-              />
-              <label className="absolute left-0 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#d4af37] peer-valid:-top-3 peer-valid:text-xs">
-                Email
-              </label>
-            </div>
+              <div>
+                <label className="block font-mono font-bold text-foreground mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-surface-bright border-4 border-black py-3 px-4 text-foreground font-medium focus:outline-none focus:bg-white focus:shadow-[4px_4px_0_0_#b70011] transition-all"
+                  placeholder="john@example.com"
+                />
+              </div>
 
-            <div className="relative">
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="4"
-                className="w-full bg-transparent border-b border-gray-700 py-3 text-white focus:outline-none focus:border-[#d4af37] transition-colors peer placeholder-transparent resize-none"
-                placeholder="Message"
-              />
-              <label className="absolute left-0 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#d4af37] peer-valid:-top-3 peer-valid:text-xs">
-                Message
-              </label>
-            </div>
+              <div>
+                <label className="block font-mono font-bold text-foreground mb-2">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="4"
+                  className="w-full bg-surface-bright border-4 border-black py-3 px-4 text-foreground font-medium focus:outline-none focus:bg-white focus:shadow-[4px_4px_0_0_#b70011] transition-all resize-none"
+                  placeholder="Hello there!"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#d4af37] text-black font-bold tracking-widest hover:bg-[#b5952f] transition-colors rounded-sm"
-            >
-              SEND MESSAGE
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-secondary text-white font-mono font-bold tracking-widest border-4 border-black shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
         </div>
       </RevealOnScroll>
     </section>

@@ -8,14 +8,33 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
+        mono: ['"Space Mono"', 'monospace'],
       },
       colors: {
-        'luxury-black': '#0a0a0a',
-        'luxury-charcoal': '#1a1a1a',
-        'luxury-gray': '#2a2a2a',
-        'off-white': '#f5f5f5',
-        'accent-gold': '#d4af37', // Example luxury accent if needed, can be subtle
+        background: 'var(--background, #FFFFFF)',
+        foreground: 'var(--foreground, #281715)',
+        surface: '#fff8f7',
+        'surface-dim': '#f3d3cf',
+        'surface-bright': '#fff8f7',
+        primary: '#b70011',
+        'on-primary': '#ffffff',
+        secondary: '#735c00',
+        'on-secondary': '#ffffff',
+        tertiary: '#005e8d',
+        'on-tertiary': '#ffffff',
+        error: '#ba1a1a',
+        'on-error': '#ffffff',
+        border: '#000000',
+        muted: '#F3F4F6',
+        card: '#fff8f7',
+      },
+      boxShadow: {
+        'brutal-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+        'brutal': '4px 4px 0px 0px rgba(0,0,0,1)',
+        'brutal-md': '6px 6px 0px 0px rgba(0,0,0,1)',
+        'brutal-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,26 +7,27 @@
 @import './styles/animations.css';
 
 :root {
-  color-scheme: dark;
+  --background: #fff8f7;
+  --foreground: #281715;
 }
 
 body {
-  @apply bg-luxury-black text-off-white overflow-x-hidden antialiased;
+  @apply bg-background text-foreground overflow-x-hidden antialiased;
 }
 
-/* Custom scrollbar for premium feel */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-luxury-black;
+  @apply bg-surface-dim border-l-2 border-border;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-luxury-gray rounded-full;
+  @apply bg-primary border-2 border-border;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
+  @apply bg-[#93000b];
 }

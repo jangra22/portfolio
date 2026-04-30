@@ -4,6 +4,12 @@ import RevealOnScroll from '../components/common/RevealOnScroll';
 const Projects = () => {
   const projects = [
     {
+      title: "EasyPay",
+      description: "Developing with React, Django, and MongoDB to enable barcode-based self-checkout with instant payments and QR exit verification, integrating Google Gemini API for personalized health scoring across 12+ medical conditions (diabetes, hypertension, allergies)..",
+      tags: ["Django", "Fast API", "TailwindCSS", "PostgreSQL"],
+      link: "https://healthscan-kappa.vercel.app/"
+    },
+    {
       title: "Lost and found Portal For College",
       description: "A full-stack web platform designed to streamline lost and found item reporting within a college campus. Features secure authentication, real-time item listings, and an efficient claim workflow.",
       tags: ["React", "Next.js", "TailwindCSS", "D3.js"],
@@ -20,31 +26,39 @@ const Projects = () => {
       description: "A modern full-stack e-commerce solution featuring dynamic product management, secure user authentication, and seamless checkout flow.",
       tags: ["React", "Express.js", "TailwindCSS", "MongoDB"],
       link: "https://dancing-kataifi-0d5287.netlify.app/"
+    },
+    {
+      title: "Spend-Sphere",
+      description: "A modern UI/UX expense tracking website.",
+      tags: ["React", "Express.js", "TailwindCSS"],
+      link: "https://spend-sphere-mu.vercel.app/"
     }
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6">
-      <div className="max-w-6xl mx-auto w-full">
+    <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 bg-background">
+      <div className="max-w-7xl mx-auto w-full">
         <RevealOnScroll>
-          <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground bg-primary text-white border-4 border-black px-6 py-3 inline-block shadow-brutal rotate-2">
+              Featured Projects
+            </h2>
+          </div>
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <RevealOnScroll key={index}>
               <div
-                className="group relative p-6 h-full bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300 hover:-translate-y-2"
+                className="group relative p-6 h-full bg-white border-4 border-black shadow-brutal transition-all duration-300 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none flex flex-col"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute -top-3 -right-3 w-6 h-6 bg-secondary border-2 border-black rounded-full" />
                 
-                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#d4af37] transition-colors">
+                <h3 className="text-xl font-display font-bold mb-3 text-black group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                <p className="text-on-surface-variant font-medium mb-6 text-sm leading-relaxed flex-grow">
                   {project.description}
                 </p>
 
@@ -52,7 +66,7 @@ const Projects = () => {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-xs bg-black/50 rounded-md text-gray-400 border border-white/5"
+                      className="px-2 py-1 text-xs font-mono font-bold bg-surface-dim text-foreground border-2 border-black shadow-brutal-sm"
                     >
                       {tag}
                     </span>
@@ -61,7 +75,9 @@ const Projects = () => {
 
                 <a
                   href={project.link}
-                  className="inline-block text-[#d4af37] text-sm font-medium hover:underline hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-primary text-white font-mono font-bold px-4 py-2 border-4 border-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all text-center"
                 >
                   View Project →
                 </a>
