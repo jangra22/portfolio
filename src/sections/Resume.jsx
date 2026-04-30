@@ -1,6 +1,6 @@
 import React from 'react';
 import RevealOnScroll from '../components/common/RevealOnScroll';
-import resumePdf from '../assets/Ritikresumeupdated.pdf';
+import resumePdf from '../assets/Ritik_Resume.pdf';
 
 const Resume = () => {
   return (
