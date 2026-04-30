@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import heroProfile from '../assets/images/hero-profile.jpg';
-import resumePdf from '../assets/Ritikresumeupdated.pdf';
+import resumePdf from '../assets/Ritik_Resume.pdf';
 
 const Hero = () => {
   const imageRef = useRef(null);
