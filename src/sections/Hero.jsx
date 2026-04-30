@@ -71,10 +71,10 @@ const Hero = () => {
           I craft performant, neo-brutalist digital experiences that merge bold aesthetic with powerful AI integrations.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center animate-slide-up" style={{ animationDelay: '0.5s' }}>
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-center animate-slide-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
           <a
             href="#projects"
-            className="px-8 py-4 bg-primary text-white font-mono font-bold tracking-wide border-4 border-black shadow-brutal transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+            className="flex items-center justify-center w-full md:w-auto text-center px-8 py-4 bg-primary text-white font-mono font-bold tracking-wide border-4 border-black shadow-brutal transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
             View Projects
           </a>
@@ -82,7 +82,7 @@ const Hero = () => {
           <a
             href={resumePdf}
             download="Ritik_Jangra_Resume.pdf"
-            className="px-8 py-4 bg-white text-black font-mono font-bold tracking-wide border-4 border-black shadow-brutal transition-all hover:bg-surface-dim hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+            className="flex items-center justify-center w-full md:w-auto text-center px-8 py-4 bg-white text-black font-mono font-bold tracking-wide border-4 border-black shadow-brutal transition-all hover:bg-surface-dim hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
             Download Resume
           </a>
