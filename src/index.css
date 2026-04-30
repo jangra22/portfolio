@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './styles/animations.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './styles/animations.css';
 
 :root {
   --background: #fff8f7;
