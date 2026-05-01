@@ -19,7 +19,7 @@ const Projects = () => {
       title: "StreakForge",
       description: "A full-stack habit tracker with weekly checkbox grid, real-time progress bars, and streak counters.",
       tags: ["Next.js", "React", "Tailwind CSS", "Supabase"],
-      link: "https://streakforge2208.vercel.app/"
+      link: "https://streakfforge.vercel.app/"
     },
     {
       title: "E-Commerce",
