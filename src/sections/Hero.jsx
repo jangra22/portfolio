@@ -42,7 +42,7 @@ const Hero = () => {
         ref={imageRef}
         className="fixed top-24 left-0 w-full flex justify-center z-0 will-change-transform pointer-events-none"
       >
-        <div className="relative w-64 h-80 md:w-80 md:h-[400px] border-4 border-black shadow-brutal animate-scale-in">
+        <div className="relative w-64 h-64 md:w-80 md:h-80 aspect-square border-4 border-black shadow-brutal animate-scale-in">
           <div className="absolute -inset-2 bg-secondary border-4 border-black -z-10 translate-x-4 translate-y-4" />
           <img 
             src={heroProfile} 
@@ -53,7 +53,7 @@ const Hero = () => {
       </div>
 
       {/* SCROLLABLE Text Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center pt-[420px] md:pt-[520px] pb-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center pt-[380px] md:pt-[420px] pb-20">
         <div className="inline-block mb-4">
           <h2 className="text-sm md:text-base font-mono font-bold tracking-[0.2em] bg-secondary text-white px-4 py-2 border-2 border-black uppercase animate-slide-up inline-block shadow-brutal-sm" style={{ animationDelay: '0.1s' }}>
             Full Stack & AI Generalist
