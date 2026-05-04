@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import heroProfile from '../assets/images/hero-profile.jpg';
+import heroProfile from '../assets/images/ritik_sketch.png';
 import resumePdf from '../assets/Ritik_Resume.pdf';
 
 const Hero = () => {
