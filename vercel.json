@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/easypay",
+      "destination": "https://healthscan-kappa.vercel.app/welcome"
+    },
+    {
+      "source": "/streakforge",
+      "destination": "https://streakfforge.vercel.app/"
+    }
+  ]
+}
