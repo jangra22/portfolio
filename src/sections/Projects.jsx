@@ -32,9 +32,15 @@ const Projects = () => {
       description: "A modern UI/UX expense tracking website.",
       tags: ["React", "Express.js", "TailwindCSS"],
       link: "https://spend-sphere-mu.vercel.app/"
+    },
+    {
+      title: "Lost and found Portal For College",
+      description: "A full-stack web platform designed to streamline lost and found item reporting within a college campus. Features secure authentication, real-time item listings, and an efficient claim workflow.",
+      tags: ["React", "Next.js", "TailwindCSS", "D3.js"],
+      link: "https://silly-dusk-155e98.netlify.app/"
     }
   ];
-
+  
   return (
     <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto w-full">
