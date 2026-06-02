@@ -10,10 +10,10 @@ const Projects = () => {
       link: "https://healthscan-kappa.vercel.app/"
     },
     {
-      title: "Lost and found Portal For College",
-      description: "A full-stack web platform designed to streamline lost and found item reporting within a college campus. Features secure authentication, real-time item listings, and an efficient claim workflow.",
-      tags: ["React", "Next.js", "TailwindCSS", "D3.js"],
-      link: "https://silly-dusk-155e98.netlify.app/"
+      title: "RestroFlow - Contactless Dining & Smart POS Console",
+      description: "A premium, component-based restaurant POS billing terminal and contactless QR-based ordering portal built using modern MVC architecture. Features real-time kitchen display monitor syncing, dynamic deficit-based inventory auto-restocking, and interactive business analytics dashboards.",
+      tags: ["React", "Node.js", "Express.js", "SQL", "CSS3"],
+      link: "https://restroflowfinal.vercel.app/"
     },
     {
       title: "StreakForge",
